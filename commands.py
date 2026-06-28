@@ -1,16 +1,15 @@
-actions = [
-    "play",
-    "open",
-    "search",
-    "tell"
-]
-
-targets = [
+actions = {
+    "play": ["play", "start", "begin", "run"],
+    "open": ["open", "launch"],
+    "search": ["search", "find", "look", "check"],
+    "tell" : ["say", "tell"]
+}
+targets = {
     "music",
     "spotify",
     "youtube",
     "time"
-]
+}
 
 def play_music():
     print("Playing music...")
@@ -33,8 +32,11 @@ def parse_command(commands):
     target = None
 
     for word in commands:
-        if word in actions:
-            action = word
+        for key in actions:
+            if word in actions[key]:
+                action = key
+                break  
+
         if word in targets:
             target = word
     return action, target

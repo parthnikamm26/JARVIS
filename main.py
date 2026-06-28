@@ -20,6 +20,7 @@ while running:
     commands = commands.strip().lower().split()
 
     action, target = parse_command(commands)
+    
     command_key = (action, target)
     
     if command_key in command_map:
